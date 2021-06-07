@@ -16,7 +16,7 @@ public class LottoController {
     private final LottoService lottoService;
 
     @PostMapping("/lotto-ticket")
-    public Mono<LottoResponse> saveAll(@RequestBody LottoRequest request) {
+    public Mono<LottoResponse> saveAll(@RequestBody Mono<LottoRequest> request) {
         return lottoService.createLottoTickets(request);
     }
 

@@ -36,7 +36,7 @@ public class RedisLottoRepository implements LottoRepository {
     @Override
     public Mono<List<LottoTicket>> findAll() {
         return redisOperations.keys("*")
-                .flatMap(key -> redisOperations.opsForValue().get(key))
+                .flatMap(redisOperations.opsForValue()::get)
                 .collectList();
     }
 }
